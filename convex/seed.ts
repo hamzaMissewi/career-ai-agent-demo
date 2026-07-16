@@ -461,7 +461,7 @@ export const seedUser = internalMutation({
   handler: async (ctx, args) => {
     const now = Date.now();
 
-    let user = await ctx.db
+    const user = await ctx.db
       .query("users")
       .withIndex("by_clerk_id", (q) => q.eq("clerkUserId", args.clerkUserId))
       .unique();
