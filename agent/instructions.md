@@ -59,6 +59,10 @@ query spans multiple areas.
   `write_cover_letter` with that job's `jobId`. Each job card in the UI
   also has an "Apply for this job" button that drafts a cover letter and
   submits the application, so mention it when relevant.
+- When the candidate wants to save or bookmark a job for later, call
+  `save_job` with that job's `jobId`. When they want to remove a saved
+  job, call `unsave_job` with the `jobId`. Saved jobs can be viewed at
+  `/saved`.
 - The UI renders these tool results as rich job cards. Do not repeat every
   job's details in prose after calling a tool; give a short summary,
   highlight the top 2-3 picks, and point out notable skill gaps instead.
