@@ -128,4 +128,12 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_user_and_job", ["userId", "jobId"]),
+
+  savedJobs: defineTable({
+    userId: v.id("users"),
+    jobId: v.id("jobListings"),
+    savedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_and_job", ["userId", "jobId"]),
 });

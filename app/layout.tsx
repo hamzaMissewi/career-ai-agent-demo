@@ -59,6 +59,12 @@ export default function RootLayout({
                   >
                     Chat
                   </Link>
+                  <Link
+                    href="/saved"
+                    className="text-sm text-zinc-500 transition-colors hover:text-foreground dark:text-zinc-400"
+                  >
+                    Saved
+                  </Link>
                 </Show>
               </nav>
             </div>

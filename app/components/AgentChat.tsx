@@ -15,6 +15,8 @@ import {
 const TOOL_LABELS: Record<string, string> = {
   search_jobs: "Searching job listings",
   find_matches: "Matching jobs to your profile",
+  save_job: "Saving job",
+  unsave_job: "Removing saved job",
 };
 
 function ToolPart({
@@ -28,6 +30,14 @@ function ToolPart({
     }
     if (part.toolName === "find_matches") {
       return <MatchResults output={part.output as FindMatchesOutput} />;
+    }
+    if (part.toolName === "save_job" || part.toolName === "unsave_job") {
+      const output = part.output as { saved: boolean; message: string };
+      return (
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          ✓ {output.message}
+        </p>
+      );
     }
     return (
       <p className="font-mono text-xs text-zinc-500 dark:text-zinc-400">

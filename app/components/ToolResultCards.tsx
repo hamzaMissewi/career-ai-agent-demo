@@ -1,6 +1,7 @@
 "use client";
 
 import { ApplyButton, useAppliedJobIds } from "./ApplyButton";
+import { SaveJobButton, useSavedJobIds } from "./SaveJobButton";
 
 type JobCardData = {
   jobId: string;
@@ -125,6 +126,7 @@ function JobMeta({ job }: { job: JobCardData }) {
 
 export function JobSearchResults({ output }: { output: SearchJobsOutput }) {
   const appliedJobIds = useAppliedJobIds();
+  const savedJobIds = useSavedJobIds();
   if (output.jobs.length === 0) {
     return (
       <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -158,7 +160,11 @@ export function JobSearchResults({ output }: { output: SearchJobsOutput }) {
               ))}
             </div>
           )}
-          <div className="mt-auto pt-1">
+          <div className="mt-auto flex items-center gap-2 pt-1">
+            <SaveJobButton
+              jobId={job.jobId}
+              saved={savedJobIds.has(job.jobId)}
+            />
             <ApplyButton
               jobId={job.jobId}
               title={job.title}
@@ -174,6 +180,7 @@ export function JobSearchResults({ output }: { output: SearchJobsOutput }) {
 
 export function MatchResults({ output }: { output: FindMatchesOutput }) {
   const appliedJobIds = useAppliedJobIds();
+  const savedJobIds = useSavedJobIds();
   if (output.matches.length === 0) {
     return (
       <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -208,7 +215,11 @@ export function MatchResults({ output }: { output: FindMatchesOutput }) {
                 ))}
               </div>
             )}
-            <div className="pt-1">
+            <div className="flex items-center gap-2 pt-1">
+              <SaveJobButton
+                jobId={match.jobId}
+                saved={savedJobIds.has(match.jobId)}
+              />
               <ApplyButton
                 jobId={match.jobId}
                 title={match.title}
